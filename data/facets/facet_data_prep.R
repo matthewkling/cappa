@@ -277,7 +277,7 @@ for(taxonomy in c("chrono", "phylo", "clade", "species")){
       
       # split this one to get under github size limit
       if(taxonomy == "species"){
-            saveRDS(data[1:8], paste0("e:/phycon/shiny/cappa/data/facets/data_", taxonomy, ".rds"))
+            saveRDS(data[1:8], paste0("e:/phycon/shiny/cappa/data/facets/data_", taxonomy, "1.rds"))
             saveRDS(data[9], paste0("e:/phycon/shiny/cappa/data/facets/data_", taxonomy, "2.rds"))
             
       }

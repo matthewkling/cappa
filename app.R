@@ -56,9 +56,13 @@ facets <- data.frame(var=c("time", "anagenesis", "cladogenesis", "species"),
                                    "Measuring branch lengths in accumulated mutations highlights genetic divergence among taxa.", 
                                    "Measuring all brach segments as equal length emphasizes assemblages representing many speciation events.", 
                                    "Defining biodiversity as species richness ignores evolutionary relationships, treating each species as equally distinctive as represented by a 'star tree' with no internal branches and identical terminal branch lengths."),
-                     file=c("data_chrono.rds", "data_phylo.rds",
-                            "data_clade.rds", "data_species.rds"),
+                     file=c("data/facets/data_chrono.rds", "data/facets/data_phylo.rds",
+                            "data/facets/data_clade.rds", "data/facets/data_species.rds"),
                      stringsAsFactors=F)
+c("data/facets/data_species1.rds", "data/facets/data_species2.rds") %>%
+      lapply(readRDS) %>%
+      do.call("c", .) %>%
+      saveRDS("data/facets/data_species.rds")
 
 lineages <- data.frame(label=c("branch length", "endemism", "range unprotection", 
                                "presence at selected site", "benefit at selected site", "highlight selected taxon"),
@@ -78,14 +82,14 @@ palettes <- list(heat=c("white", "yellow", "#dd4b39"),
                  grayscale=c("white", "black"))
 
 # spatial data for grid cells 
-r <- raster("raster_template.tif")
+r <- raster("data/raster_template.tif")
 g <- rasterToPolygons(r) %>%
       spTransform(crs("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"))
 g$id <- paste0("cell", 1:nrow(g))
 
 
 #blurb <- readLines("blurb.txt")
-jepson <- readRDS("jepson_dir.rds")
+jepson <- readRDS("data/jepson/jepson_dir.rds")
 
 #button_style <- "white-space:normal; text-align:center; background-color:#fff; color:#000000; border-color:#fff; width:100%; height:150px;"
 button_style <- "white-space:normal; text-align:center; background-color:#fff; color:#000000; border-color:#fff; width:100%;"
