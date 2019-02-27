@@ -1,0 +1,50 @@
+
+
+/* content boxes, info status */
+/* red color was #dd4b39 */
+
+
+/* content boxes */
+
+.box.box-danger>.box-header>.box-title {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000000;
+}
+
+.box.box-danger {
+  border-top-color:#000000;
+}
+
+/* header box */
+
+.box.box-solid.box-danger>.box-header>.box-title {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.box.box-solid.box-danger>.box-header {
+  background: #000000;
+}
+
+.box.box-solid.box-danger {
+  border-bottom-color:#f9f9f9;
+  border-left-color:#f9f9f9;
+  border-right-color:#f9f9f9;
+  border-top-color:#f9f9f9;
+}
+
+
+
+#photos { 
+	overflow: hidden;
+	white-space: nowrap;
+	}
+
+/* page background */
+.content-wrapper {
+  background-color: #ffffff;
+}
