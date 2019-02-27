@@ -3,7 +3,7 @@ library(tidyverse)
 
 source("e:/chilefornia/chilefornia/jepson_parse.r")
 
-taxa <- readRDS("e:/phycon/shiny/cappa/data_species.rds")$diversity_mat %>%
+taxa <- readRDS("e:/phycon/shiny/cappa/facets/data_species.rds")$diversity_mat %>%
       colnames() %>%
       data.frame(gs=.) %>%
       separate(gs, c("genus", "species"), sep="_", remove=F)
@@ -86,4 +86,4 @@ p <- full_join(spcl, ds)
 
 #p <- select(p, species, species_url, pic_urls) %>% distinct()
 
-saveRDS(p, "e:/phycon/shiny/sandbox/jepson_dir.rds")
+saveRDS(p, "e:/phycon/shiny/cappa/jepson/jepson_dir.rds")
