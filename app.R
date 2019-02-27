@@ -59,10 +59,13 @@ facets <- data.frame(var=c("time", "anagenesis", "cladogenesis", "species"),
                      file=c("data/facets/data_chrono.rds", "data/facets/data_phylo.rds",
                             "data/facets/data_clade.rds", "data/facets/data_species.rds"),
                      stringsAsFactors=F)
-c("data/facets/data_species1.rds", "data/facets/data_species2.rds") %>%
-      lapply(readRDS) %>%
-      do.call("c", .) %>%
-      saveRDS("data/facets/data_species.rds")
+
+if(!file.exists("data/facets/data_species.rds")){
+      c("data/facets/data_species1.rds", "data/facets/data_species2.rds") %>%
+            lapply(readRDS) %>%
+            do.call("c", .) %>%
+            saveRDS("data/facets/data_species.rds")
+}
 
 lineages <- data.frame(label=c("branch length", "endemism", "range unprotection", 
                                "presence at selected site", "benefit at selected site", "highlight selected taxon"),
