@@ -110,6 +110,8 @@ ui <- dashboardPage(skin="blue",
                           
                           introjsUI(),
                           
+                          tags$head(includeScript("google-analytics.js")),
+                          
                           tags$head(
                                 # import css styles
                                 tags$link(rel = "stylesheet", type = "text/css", href = "custom.css"),
@@ -129,6 +131,7 @@ ui <- dashboardPage(skin="blue",
                                 });
                             ')
                           ),
+                          
                           
                           fluidRow(
                                 column(width=12,
