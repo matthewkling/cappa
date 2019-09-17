@@ -54,7 +54,7 @@ facets <- data.frame(var=c("time", "anagenesis", "cladogenesis", "species"),
                      label=c("survival time", "divergence", "diversification", "species richness"),
                      description=c("Measuring branch lengths in years highlights the total amount of time that independent lineages survived to give rise to a set of extant taxa.",
                                    "Measuring branch lengths in accumulated mutations highlights genetic divergence among taxa.", 
-                                   "Measuring all brach segments as equal length emphasizes assemblages representing many speciation events.", 
+                                   "Measuring all branch segments as equal length emphasizes assemblages representing many speciation events.", 
                                    "Defining biodiversity as species richness ignores evolutionary relationships, treating each species as equally distinctive as represented by a 'star tree' with no internal branches and identical terminal branch lengths."),
                      file=c("data/facets/data_chrono.rds", "data/facets/data_phylo.rds",
                             "data/facets/data_clade.rds", "data/facets/data_species.rds"),
@@ -136,7 +136,8 @@ ui <- dashboardPage(skin="blue",
                           fluidRow(
                                 column(width=12,
                                        introBox(
-                                             box(width=NULL, title=span("California Plant Phylodiversity Atlas", span("[beta]", style="color:#dd4b39; font-size:15px")),  
+                                             box(width=NULL, title=span("California Plant Phylodiversity Atlas"#, span("[beta]", style="color:#dd4b39; font-size:15px")
+                                                                        ),  
                                                  solidHeader=TRUE, status="danger", collapsible=T, collapsed=F,
                                                  fluidRow(
                                                        column(2,
@@ -163,8 +164,9 @@ ui <- dashboardPage(skin="blue",
                                                                            style=button_style)),
                                                        column(2,
                                                               actionButton("credits", 
-                                                                           span(h5("Part of the California Plant Phylodiversity Project, funded by the National Science Foundation.",
-                                                                                   "App created by Matthew Kling. Site still under development so please pardon any buggy behavior.")), 
+                                                                           span(h5("This projec is part of the UC Berkeley ", a("California Plant Phylodiversity Project", href="http://ucjeps.berkeley.edu/"), 
+                                                                                   "funded by the National Science Foundation.",
+                                                                                   "App created by", a("Matthew Kling", href="http://matthewkling.net"), ".")), 
                                                                            style=button_style)),
                                                        column(2,
                                                               tags$button(
@@ -203,8 +205,8 @@ ui <- dashboardPage(skin="blue",
                                                                 "Photos of species in the taxon are drawn randomly from the Jepson eFlora;",
                                                                 "click images to view botanical and ecological information on the eFlora website."),
                                                              h5("Click the phylogeny or the community table below to select a specific taxon.", #, or click the refresh button to select a random taxon.",
-                                                                "To map the range of the selected clade, change map variable to 'taxon range';",
-                                                                "to view it in the evolutionary tree, change the branch color variable to 'highlight selected taxon'."))
+                                                                "To map the range of the selected clade, change map variable to 'taxon range.'",
+                                                                "To view it in the evolutionary tree, change the branch color variable to 'highlight selected taxon'."))
                                        )
                                 )
                           ),
@@ -535,7 +537,8 @@ server <- function(input, output, session) {
                   geom_segment(color=pd$color) +
                   coord_fixed() +
                   theme_void() +
-                  theme(panel.grid.major=element_blank(),
+                  theme(axis.line = element_blank(), 
+                        panel.grid = element_blank(),
                         legend.position="none")
             ggplotly(p, tooltip=c("text"))
       })
